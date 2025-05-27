@@ -2,7 +2,7 @@
   (:require [clojure.tools.build.api :as b]
             [deps-deploy.deps-deploy :as dd]))
 
-(def lib 'org.clojars.lukaszkorecki/portal.browse.cljfx)
+(def lib 'org.clojars.lukaszkorecki/portal.browser.cljfx)
 (def version-stable (format "1.0.0.%s" (b/git-count-revs nil)))
 (defn version-snapshot [_suffix] (format "%s-SNAPSHOT" version-stable))
 

@@ -1,5 +1,5 @@
-(ns portal.browser.cljfx
-  (:require portal.browser
+(ns portal.browse.cljfx
+  (:require portal.runtime.browser
             [cljfx.api :as fx]
             [cljfx.lifecycle :as lifecycle]
             [cljfx.mutator :as mutator]
@@ -84,7 +84,7 @@
                        instance
                        (fx/mount-renderer *state renderer))))))
 
-(defmethod portal.browser/-open :cljfx [{:keys [portal server]}]
+(defmethod portal.runtime.browser/-open :cljfx [{:keys [portal server]}]
   (let [url (str "http://" (:host server) ":" (:port server) "?" (:session-id portal))]
 
     (browse url {:title (str "Portal - " url)})))

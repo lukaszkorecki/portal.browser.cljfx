@@ -2,6 +2,12 @@
 
  JavaFX-based launcher for Portal.
 
+ 
+[![Clojars Project](https://img.shields.io/clojars/v/org.clojars.lukaszkorecki/portal.browser.cljfx.svg)](https://clojars.org/org.clojars.lukaszkorecki/portal.browser.cljfx)
+
+> [!WARNING]
+> Due to weird issues, this project will only work with JVM 21+ - I run into JVM segfaults when using it with JVM11.
+
 # Why?
 
 [Portal](https://github.com/djblue/portal) is fantastic, but because I'm quite disorganized using my browser as the viewer is not a great experience for me. I wanted something that would allow me to use Portal in a more built-in way, similar to `clojure.inspector`.

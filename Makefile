@@ -13,7 +13,11 @@ install: clean jar
 	clj -T:build install ${snapshot}
 
 
-publish:
+publish: clean jar
 	clj -T:build publish $(snapshot)
 
 release: clean jar publish
+
+
+help:
+	@grep -E '^[a-zA-Z0-9_-]+:' $(MAKEFILE_LIST) | sed 's/:.+$\//g' | sort

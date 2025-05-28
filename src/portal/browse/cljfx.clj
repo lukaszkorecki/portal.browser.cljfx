@@ -10,12 +10,7 @@
 (def java-major-version
   (-> (System/getProperty "java.version") (str/split #"\.") first parse-long))
 
-;; we need this because JDK11 blows up on mac-os regardless of how it was installed
-(when (< java-major-version 21)
-  (throw (ex-info "Java 21 or higher is required" {})))
-
 ;; Kick off, based on examples in clfx repo
-
 
 (def web-view-with-ext-props
   (fx/make-ext-with-props
@@ -85,6 +80,9 @@
                        (fx/mount-renderer *state renderer))))))
 
 (defmethod portal.runtime.browser/-open :cljfx [{:keys [portal server]}]
-  (let [url (str "http://" (:host server) ":" (:port server) "?" (:session-id portal))]
+  ;; we need this because JDK11 blows up on mac-os regardless of how it was installed
+  (when (< java-major-version 21)
+    (throw (ex-info "Java 21 or higher is required" {})))
 
+  (let [url (str "http://" (:host server) ":" (:port server) "?" (:session-id portal))]
     (browse url {:title (str "Portal - " url)})))
